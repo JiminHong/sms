@@ -1,0 +1,25 @@
+body{
+	font-family: 'Open Sans', sans-serif;
+}
+h1{
+	font-weight: 800;
+	color: rgba(64, 64, 64, 1);
+}
+h2{
+	color: rgba(38, 50, 72, 1); 
+}
+h3{
+	color: rgba(126, 138, 162, 1);
+	font-weight: 700;
+}
+h4{
+	font-weight: 600;
+	color: rgba(38, 50, 72, 1);
+}
+p{
+	font-weight: 300;
+	color: rgba(38, 50, 72, 1);
+}
+ul{
+	list-style-type: none;
+}

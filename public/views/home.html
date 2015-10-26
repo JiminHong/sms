@@ -1,0 +1,41 @@
+<h2>This is public/views/home.html :-) </h2>
+
+<form>
+	<label for="">
+		<input type="text" ng-model="search.text" placeholder="Search here" autofocus>	
+	</label>
+
+	<label for="">
+		<select name="" id="" ng-model="search.group">
+			<option value="name">Name</option>
+			<option value="reknown">Reknown</option>
+		</select>
+	</label>
+
+	<label for="ascending">
+		<input type="radio" ng-model="direction" name="direction" id="ascending" checked>
+		Ascending
+	</label>
+
+	<label for="descending">
+		<input type="radio" ng-model="direction" name="direction" id="descending" value="reverse">
+		Ascending
+	</label>
+
+
+</form>
+
+<ul>
+	<li ng-repeat="artist in artists | filter: search.text | orderBy: search.group:direction">
+		<h3>{{ artist.name }}</h3>
+		<h4>{{ artist.reknown | uppercase}}</h4>
+		<p>
+			{{ artist.bio | limitTo: 140 }}
+			{{ artist.bio.length > 140 ? '...' : ''}}
+		
+<!-- 		<a href="#">
+			<pre>{{artist | json}}</pre>
+		</a> -->
+
+	</li>
+</ul>
