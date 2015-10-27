@@ -1,15 +1,25 @@
-<h2>This is public/views/home.html :-) </h2>
-
-<form ng-submit="postComment()">
-	<label for="">
-		<input type="text" ng-model="newComment.author" placeholder="Enter author">
-	</label>
-	<label for="">
-		<textarea type="text" ng-model="newComment.body" placeholder="Enter comments" autofocus>
-		</textarea>
-	</label>
-	<button type="submit" class="btn btn-default">Add data</button>
-</form>
+<!-- <h2>This is public/views/home.html :-) </h2> -->
+<div class="row">
+	<h2>Add author and comments</h2>
+</div>
+<div class="form-group">
+	<form ng-submit="postComment()">
+		<div class="row">
+			<label for="">
+				<input type="text" ng-model="newComment.author" placeholder="Enter author">
+			</label>
+		</div>
+		<div class="row">
+			<label for="">
+				<textarea class="form-control" type="text" ng-model="newComment.comment" placeholder="Enter comments" autofocus>
+				</textarea>
+			</label>
+		</div>
+		<div class="row">
+			<button type="submit" class="btn btn-default">Add data</button>
+		</div>
+	</form>
+</div>
 
 <!-- <form>
 	<label for="">
@@ -36,8 +46,36 @@
 
 <ul>
 	<li ng-repeat="user in users">
+		<div>
 		<h3>{{ user.author }}</h3>
-		{{ user.body }}
+		<h4>{{ user.comment }}</h4>
+		<p>{{ user.$id }}</p>
+		
+		<button type="submit" ng-click="removeComment(user)" class="btn btn-danger">Remove comment</button>
+
+		<button type="submit" ng-click="toggleUpdate = !toggleUpdate" class="btn btn-primary">Update comment</button>
+
+		<div class="form-group" ng-show="toggleUpdate">
+			<form ng-submit="updateComment()">
+				<div class="row">
+					<label for="">
+
+						<input type="text" ng-model="user.author" ng-change="users.$save(user)" placeholder="Update author">
+					</label>
+				</div>
+				<div class="row">
+					<label for="">
+
+						<textarea class="form-control" type="text" ng-model="user.comment"  ng-change="users.$save(user)" placeholder="Update comments" autofocus>
+						</textarea>
+					</label>
+				</div>
+				<div class="row">
+					<button type="submit" class="btn btn-default">Submit Comment</button>
+				</div>
+			</form>
+		</div>
+
 <!-- 		<h4>{{ user.value | uppercase}}</h4> -->
 <!-- 		<p>
 			{{ user.bio | limitTo: 140 }}
@@ -47,6 +85,5 @@
 <!-- 		<a href="#">
 			<pre>{{user | json}}</pre>
 		</a> -->
-
 	</li>
 </ul>

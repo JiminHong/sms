@@ -9,13 +9,23 @@ angular.module('myapp')
 		console.log("data", $scope.newComment);
 
 		$scope.users.$add({
-			author: $scope.newComment.author,
-			body: 	$scope.newComment.body
+			author: 	$scope.newComment.author,
+			comment: 	$scope.newComment.comment
 		})
 	}
 
-	// $http.get('js/data.json').success(function(data){
-	// 	$scope.artists = data;
-	// 	console.log($scope.artists);
-	// })
+	$scope.removeComment = function(obj){
+		$scope.users.$remove(obj).then(function(ref){
+			ref.key() === obj.$id;
+		})
+	}
+
+	$scope.updateComment = function(obj){
+		$scope.users.$save(obj).then(function(ref) {
+			ref.key() === obj.$id;
+		})
+
+		location.reload();
+	}
+
 }])
