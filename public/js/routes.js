@@ -17,7 +17,7 @@ myapp.config(function ($routeProvider, $locationProvider){
 
 		}
 	})
-	.when('/updateForm/:obj/:index', {
+	.when('/updateForm/:userId', {
 		//its gonna load this page and run this controller.
 		templateUrl : 'views/updateForm.html',
 		controller 	: 'FormCtrl', function($scope, $http){

@@ -1,17 +1,12 @@
-<!-- <ul>
-	<li ng-repeat="user in users"> -->
-		<div class="form-group">
-			<form ng-submit="updateComment()">
-				<label for="">
-					<input type="text" ng-model="UpdateData.author" ng-change="users.$save(user)" placeholder="Update author">
-				</label>
-				<label for="">
-					<textarea class="form-control" type="text" ng-model="UpdateData.comment"  ng-change="users.$save(user)" placeholder="Update comments" autofocus>
-					</textarea>
-				</label>
-				<button type="submit" class="btn btn-default">Update Comment</button>
-			</form>
-		</div>
-<!-- 	</li>
-</ul>
- -->
+<div class="form-group">
+	<form ng-submit="updateComment()">
+		<label for="">
+			<input type="text" ng-model="user.author" ng-change="users.$save(user)" placeholder="Update author">
+		</label>
+		<label for="">
+			<textarea type="text" ng-model="user.comment"  ng-change="users.$save(user)" placeholder="Update comments" class="form-control" autofocus>
+			</textarea>
+		</label>
+		<button type="submit" class="btn btn-default">Update Comment</button>
+	</form>
+</div>

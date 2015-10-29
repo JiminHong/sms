@@ -1,5 +1,6 @@
 angular.module('myapp')
-.controller('HomeCtrl', ["$scope", "$http", "$firebaseArray", "$location", "$routeParams", function ($scope, $http, $firebaseArray, $location, $routeParams){
+.controller('HomeCtrl', ["$scope", "$http", "$firebaseArray", "$location", "$routeParams", 
+	function ($scope, $http, $firebaseArray, $location, $routeParams){
 	console.log('HomeCtrl fired');
 
 	var ref = new Firebase("https://amber-fire-1000.firebaseio.com/");
@@ -21,14 +22,12 @@ angular.module('myapp')
 	}
 
 	$scope.goUpdateForm = function(obj, index){
+		$scope.UpdateData = obj;
+		$scope.UpdateDataIndex = index;
 
-		$scope.UpdateData = angular.copy(obj);
-		$scope.UpdateDataIndex = index
-
-		// Put 
-		console.log("$scope.UpdateData",$scope.UpdateData)
-		console.log("$scope.UpdateDataIndex",$scope.UpdateDataIndex)
-		$location.path("/updateForm/"+$scope.UpdateData+$scope.UpdateDataIndex)
+		console.log("$scope.UpdateData",$scope.UpdateData);
+		console.log("$scope.UpdateDataIndex",$scope.UpdateDataIndex);
+		$location.path("/updateForm/"+$scope.UpdateDataIndex);
 	}
 
 }])
