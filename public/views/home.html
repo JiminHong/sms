@@ -1,89 +1,82 @@
-<!-- <h2>This is public/views/home.html :-) </h2> -->
 <div class="row">
-	<h2>Add author and comments</h2>
+	<div class="col-lg-12">
+		<h2>Add author and comments</h2>
+	</div>
 </div>
-<div class="form-group">
-	<form ng-submit="postComment()">
-		<div class="row">
-			<label for="">
-				<input type="text" ng-model="newComment.author" placeholder="Enter author">
-			</label>
-		</div>
-		<div class="row">
-			<label for="">
-				<textarea class="form-control" type="text" ng-model="newComment.comment" placeholder="Enter comments" autofocus>
-				</textarea>
-			</label>
-		</div>
-		<div class="row">
-			<button type="submit" class="btn btn-default">Add data</button>
-		</div>
-	</form>
+<div class="row">
+	<div class="col-lg-12">
+		<form ng-submit="postComment()">
+			<div class="form-group">
+					<label for="">
+						<input class="form-control" type="text" ng-model="newComment.author" placeholder="Enter author">
+					</label>
+			</div>
+			<div class="form-group">
+					<label for="">
+						<textarea class="form-control" rows="3" type="text" ng-model="newComment.comment" placeholder="Enter comments" autofocus>
+						</textarea>
+					</label>
+			</div>
+			<button type="submit" class="btn btn-outline btn-default">Add data</button>
+		</form>
+	</div>
+</div>
+<div class="row">
+	<div class="col-lg-12">
+		<h2>List of comments</h2>
+	</div>
+</div>
+<div class="row">
+	<div class="col-lg-12">		
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Author</th>
+					<th>Comments</th>
+					<th>Id</th>
+					<th>Options</th>
+				</tr>
+			</thead>
+			<tbody ng-repeat="user in users">
+				<td>{[{ user.author }]}</td>
+				<td>{[{ user.comment }]}</td>
+				<td>{[{ user.$id }]}</td>
+				<td>
+					<button type="submit" ng-click="removeComment(user)" class="btn btn-outline btn-danger">Remove</button>
+					<button type="submit" class="btn btn-outline btn-warning" ng-click="goUpdateForm(user, $index)">Update</button>
+				</td>
+			</tbody>
+		</table>
+	</div>
 </div>
 
-<!-- <form>
-	<label for="">
-		<input type="text" ng-model="search.text" placeholder="Search here" autofocus>
-	</label>
 
-	<label for="">
-		<select name="" id="" ng-model="search.group">
-			<option value="name">Name</option>
-			<option value="value">Reknown</option>
-		</select>
-	</label>
-
-	<label for="ascending">
-		<input type="radio" ng-model="direction" name="direction" id="ascending" checked>
-		Ascending
-	</label>
-
-	<label for="descending">
-		<input type="radio" ng-model="direction" name="direction" id="descending" value="reverse">
-		Descending
-	</label>
-</form> -->
-
-<ul>
+<!-- <ul>
 	<li ng-repeat="user in users">
 		<div>
-		<h3>{{ user.author }}</h3>
-		<h4>{{ user.comment }}</h4>
-		<p>{{ user.$id }}</p>
+		<h3>{[{ user.author }]}</h3>
+		<h4>{[{ user.comment }]}</h4>
+		<p>{[{ user.$id }]}</p>
 		
-		<button type="submit" ng-click="removeComment(user)" class="btn btn-danger">Remove comment</button>
+		<button type="submit" ng-click="removeComment(user)" class="btn btn-outline btn-danger">Remove comment</button>
 
-		<button type="submit" ng-click="toggleUpdate = !toggleUpdate" class="btn btn-primary">Update comment</button>
+		<button type="submit" ng-click="toggleUpdate = !toggleUpdate" class="btn btn-outline btn-warning">Update comment</button>
 
 		<div class="form-group" ng-show="toggleUpdate">
 			<form ng-submit="updateComment()">
-				<div class="row">
-					<label for="">
-
-						<input type="text" ng-model="user.author" ng-change="users.$save(user)" placeholder="Update author">
-					</label>
-				</div>
-				<div class="row">
-					<label for="">
-
-						<textarea class="form-control" type="text" ng-model="user.comment"  ng-change="users.$save(user)" placeholder="Update comments" autofocus>
-						</textarea>
-					</label>
-				</div>
-				<div class="row">
-					<button type="submit" class="btn btn-default">Submit Comment</button>
-				</div>
+				<label for="">
+					{[{ user.author }]}
+					<input type="text" ng-model="user.author" ng-change="users.$save(user)" placeholder="Update author">
+				</label>
+				<label for="">
+					{[{ user.comment }]}
+					<textarea class="form-control" type="text" ng-model="user.comment"  ng-change="users.$save(user)" placeholder="Update comments" autofocus>
+					</textarea>
+				</label>
+				<button type="submit" class="btn btn-default">Update Comment</button>
 			</form>
 		</div>
 
-<!-- 		<h4>{{ user.value | uppercase}}</h4> -->
-<!-- 		<p>
-			{{ user.bio | limitTo: 140 }}
-			{{ user.bio.length > 140 ? '...' : ''}
-		</p> -->
-		
-<!-- 		<a href="#">
-			<pre>{{user | json}}</pre>
-		</a> -->
 	</li>
-</ul>
+</ul> -->
+
