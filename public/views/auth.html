@@ -1,0 +1,11 @@
+<div ng-controller="AuthCtrl">
+	<div class="panel" ng-hide="authData">
+		<button ng-click="login()" class="btn btn-outline btn-default">Login with facebook</button>
+	</div>
+
+	<div class="panel" ng-show="authData">
+		<img ng-src="{[{ authData.facebook.profileImageURL }]}" />
+		<p>{[{ authData.facebook.displayName }]}</p>
+		<button ng-click="logout()" class="btn btn-outline btn-default">Logout</button>
+	</div>
+</div>

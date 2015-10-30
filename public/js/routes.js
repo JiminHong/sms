@@ -12,8 +12,15 @@ myapp.config(function ($routeProvider, $locationProvider){
 	$routeProvider
 	.when('/', {
 		//its gonna load this page and run this controller.
-		templateUrl : 'views/home.html',
-		controller 	: 'HomeCtrl', function($scope, $http){
+		templateUrl : 'views/auth.html',
+		controller 	: 'AuthCtrl', function($scope, $http){
+
+		}
+	})
+	.when('/createForm', {
+		//its gonna load this page and run this controller.
+		templateUrl : 'views/createForm.html',
+		controller 	: 'createFormCtrl', function($scope, $http){
 
 		}
 	})

@@ -12,7 +12,7 @@ angular.module('myapp')
 			console.log(ref)
 		})
 
-		$location.path('/');
+		$location.path('/createForm');
 	}
 
 }])

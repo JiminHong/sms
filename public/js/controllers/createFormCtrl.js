@@ -1,7 +1,7 @@
 angular.module('myapp')
-.controller('HomeCtrl', ["$scope", "$http", "$firebaseArray", "$location", "$routeParams", 
+.controller('createFormCtrl', ["$scope", "$http", "$firebaseArray", "$location", "$routeParams", 
 	function ($scope, $http, $firebaseArray, $location, $routeParams){
-	console.log('HomeCtrl fired');
+	console.log('createFormCtrl fired');
 
 	var ref = new Firebase("https://amber-fire-1000.firebaseio.com/");
 	$scope.users = $firebaseArray(ref);
