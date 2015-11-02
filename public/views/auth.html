@@ -1,4 +1,6 @@
 <div ng-controller="AuthCtrl">
+
+	<!-- Local register -->
 	<div class="panel" ng-hide="authData">
 		<form class="form-group" ng-submit="register()">
 			<label>email
@@ -11,10 +13,12 @@
 		</form>
 	</div>
 
+	<!-- Facebook Login -->
 	<div class="panel" ng-hide="authData">
 		<button ng-click="login()" class="btn btn-outline btn-default">Login with facebook</button>
 	</div>
 
+	<!-- Facebook Logout -->
 	<div class="panel" ng-show="authData">
 		<img ng-src="{[{ authData.facebook.profileImageURL }]}" />
 		<p>{[{ authData.facebook.displayName }]}</p>

@@ -35,10 +35,8 @@ myapp.controller('AuthCtrl', ["$scope", "$firebaseAuth", "$firebaseObject", "$lo
 
         };
 
-
-
-		$scope.login = function(){
-			Auth.$authWithOAuthPopup("facebook")
+		$scope.login = function(obj){
+			$scope.authObj.$authWithOAuthPopup("facebook")
 			.then(function(authData){
 				$scope.authData = authData;
 				console.log("authData :::: ",authData);
@@ -46,10 +44,11 @@ myapp.controller('AuthCtrl', ["$scope", "$firebaseAuth", "$firebaseObject", "$lo
 			.catch(function(error) {
 				console.log(error);
 			});
+			$location.path("/login/"+obj);
 		}
 
 		$scope.logout = function() {
-			Auth.$unauth();
+			$scope.authObj.$unauth();
 			console.log("Logout");
 			$location.path('/');
 		}

@@ -31,6 +31,10 @@ myapp.config(function ($routeProvider, $locationProvider){
 			
 		}
 	})
+	.when('/login/:user', {
+		templateUrl : 'views/userProfile.html',
+		controller  : 'viewProfileCtrl'
+	})
 
 })
 
