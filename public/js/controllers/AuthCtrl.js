@@ -11,7 +11,7 @@ myapp.controller('AuthCtrl', ["$scope", "$firebaseAuth", "$firebaseObject", "$lo
 		// any time auth status updates, add the user data to scope
 	    $scope.authObj.$onAuth(function(authData, index) {
 	      	$scope.authData = authData;
-	      	console.log("THIS IS AUTHDATA",authData.password.email);
+	      	// console.log("THIS IS AUTHDATA",authData);
 	    });
 
         // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: Local
@@ -24,7 +24,7 @@ myapp.controller('AuthCtrl', ["$scope", "$firebaseAuth", "$firebaseObject", "$lo
 			})
 			.then(function(authData) {
 				console.log("Logged in with ", authData.uid);
-				$location.path("/loggedIn/"+authData.uid);
+				$location.path("/loggedIn");
 			})
 			.catch(function(error) {
 				console.error("Failed", error);
@@ -100,10 +100,11 @@ myapp.controller('AuthCtrl', ["$scope", "$firebaseAuth", "$firebaseObject", "$lo
 		$scope.goCreateForm = function(){
 			$location.path('/createForm');
 		}
+
 		//Directs to the chat page
 		$scope.goChat = function(){
 			$location.path('/chat');
-		}
+		} 
 
 		console.log("authCtrl is fired");
 

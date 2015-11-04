@@ -12,7 +12,12 @@ myapp
 	// any time auth status updates, add the user data to scope
     $scope.authObj.$onAuth(function(authData) {
       	$scope.authData = authData;
-      	console.log("THIS IS AUTHDATA in UserProfileCtrl",authData.password.email);
+      	console.log("THIS IS AUTHDATA in UserProfileCtrl", authData.password.email);
     });
+
+	//Directs to the chat page
+	$scope.goChat = function(){
+		$location.path('/chat');
+	}   
 
 }])

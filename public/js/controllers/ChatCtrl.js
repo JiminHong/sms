@@ -1,5 +1,5 @@
-myapp.controller('ChatCtrl', ["$scope", "$firebaseArray", 
-function ($scope, $firebaseArray) {
+myapp.controller('ChatCtrl', ["$scope", "$firebaseArray", "$firebaseAuth", 
+function ($scope, $firebaseArray, $firebaseAuth) {
     console.log('ChatCtrl fired');
 
     var ref = new Firebase("https://amber-fire-1000.firebaseio.com/", "sample");
@@ -7,14 +7,20 @@ function ($scope, $firebaseArray) {
 
     // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: onAuth
     // any time auth status updates, add the user data to scope
+    $scope.authObj.$onAuth(function(authData) {
+        $scope.authData = authData;
+        console.log("THIS IS AUTHDATA in Chat Ctrl",authData.password.email);
+        
+        $scope.messages = $firebaseArray(ref.limit(15));
+        $scope.chatUsername = authData.password.email;
+        console.log("Username is ", $scope.chatUsername);
 
-    $scope.messages = $firebaseArray(ref.limit(15));
-    $scope.username = 'Guest' + Math.floor(Math.random()*101);
-    console.log($scope.username);
-
-    $scope.addMessage = function() {
-        $scope.messages.$add({
-        from: $scope.username, content: $scope.message
+        $scope.addMessage = function() {
+            $scope.messages.$add({
+            from: $scope.chatUsername, content: $scope.message
+        });
+        $scope.message = "";
+        }
     });
-    $scope.message = "";
-}}]);
+    
+}]);
