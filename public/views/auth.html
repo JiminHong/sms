@@ -30,16 +30,29 @@
 
 	<!-- Facebook Login -->
 	<div class="panel" ng-hide="authData">
-		<button ng-click="login()" class="btn btn-outline btn-default">Login with facebook</button>
+		<a class="btn btn-block btn-social btn-facebook" ng-click="loginFacebook()">
+			<span class="fa fa-facebook"></span> Sign in with Facebook
+		</a>
 	</div>
 
-	<!-- Facebook Logout -->
+	<!-- Google Login -->
+	<div class="panel" ng-hide="authData">
+		<a class="btn btn-block btn-social btn-google" ng-click="loginGoogle()">
+			<span class="fa fa-google-plus"></span> Sign in with Google
+		</a>
+	</div>
+
+	<!-- Profile after social media login -->
 	<div class="panel" ng-show="authData">
 		<img ng-src="{[{ authData.facebook.profileImageURL }]}" />
 		<p>{[{ authData.facebook.displayName }]}</p>
-		<button ng-click="logout()" class="btn btn-outline btn-default">Logout</button>
+		<p>{[{ authData.password.email }]}</p>
 	</div>
 
-	<button ng-click="goCreateForm()" class="btn btn-outline btn-default">Create form</button>
+	<button ng-show="authData" ng-click="logout()" class="btn btn-outline btn-default">Logout</button>
+
+
+
+  	<button ng-click="goCreateForm()" class="btn btn-outline btn-default">Create form</button>
 	<button ng-click="goChat()" class="btn btn-outline btn-default">Chat</button>
 </div>

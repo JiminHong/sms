@@ -37,6 +37,12 @@ myapp.config(function ($routeProvider, $locationProvider){
 
 		}
 	})
+	.when('/loggedIn', {
+		templateUrl : 'views/userProfile.html',
+		controller	: 'UserProfileCtrl', function($scope, $http){
+
+		}
+	})
 
 })
 
