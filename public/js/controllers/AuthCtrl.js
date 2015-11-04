@@ -9,8 +9,9 @@ myapp.controller('AuthCtrl', ["$scope", "$firebaseAuth", "$firebaseObject", "$lo
 
 		// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: onAuth
 		// any time auth status updates, add the user data to scope
-	    $scope.authObj.$onAuth(function(authData) {
-	      $scope.authData = authData;
+	    $scope.authObj.$onAuth(function(authData, index) {
+	      	$scope.authData = authData;
+	      	console.log("THIS IS AUTHDATA",authData.password.email);
 	    });
 
         // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: Local
@@ -22,8 +23,8 @@ myapp.controller('AuthCtrl', ["$scope", "$firebaseAuth", "$firebaseObject", "$lo
 				password: $scope.localLoginUser.password
 			})
 			.then(function(authData) {
-				console.log("Logged in with ", authData);
 				console.log("Logged in with ", authData.uid);
+				$location.path("/loggedIn/"+authData.uid);
 			})
 			.catch(function(error) {
 				console.error("Failed", error);

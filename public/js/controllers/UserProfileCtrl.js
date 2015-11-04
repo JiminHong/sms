@@ -1,17 +1,18 @@
-myapp.factory("Auth", ["$firebaseAuth",
-  function($firebaseAuth) {
-    var ref = new Firebase("https://amber-fire-1000.firebaseio.com/");
-    return $firebaseAuth(ref);
-  }
-]);
-
 myapp
-.controller('UserProfileCtrl', ["$scope", "Auth", "$http", "$firebaseArray", "$location", "$routeParams", 
-	function ($scope, Auth, $http, $firebaseArray, $location, $routeParams){
-	console.log('UserProfileCtrl fired');
-	$scope.auth.localLogin = Auth;
+.controller('UserProfileCtrl', ["$scope", "$http", "$firebaseAuth", "$firebaseArray", "$location", "$routeParams", 
+	function ($scope, $http, $firebaseAuth, $firebaseArray, $location, $routeParams){
 
-	$scope.auth.localLogin.$onAuth(function(authData){
-		$scope.authData = authData;
-	})
+	//user unique id
+	// console.log('UserProfileCtrl fired', $routeParams);
+
+	var ref = new Firebase("https://amber-fire-1000.firebaseio.com/", "sample");
+	$scope.authObj = $firebaseAuth(ref);
+
+	// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: onAuth
+	// any time auth status updates, add the user data to scope
+    $scope.authObj.$onAuth(function(authData) {
+      	$scope.authData = authData;
+      	console.log("THIS IS AUTHDATA in UserProfileCtrl",authData.password.email);
+    });
+
 }])

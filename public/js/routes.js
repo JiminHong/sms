@@ -37,7 +37,7 @@ myapp.config(function ($routeProvider, $locationProvider){
 
 		}
 	})
-	.when('/loggedIn', {
+	.when('/loggedIn/:authId', {
 		templateUrl : 'views/userProfile.html',
 		controller	: 'UserProfileCtrl', function($scope, $http){
 
