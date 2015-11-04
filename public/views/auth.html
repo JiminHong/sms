@@ -1,7 +1,22 @@
 <div ng-controller="AuthCtrl">
 
+	<!-- Local login -->
+	<div class="panel" ng-hide="authData">
+		<h4>Local Login</h4>
+		<form class="form-group" ng-submit="localLogin()">
+			<label>email
+				<input type="username" ng-model="localLoginUser.email" class="form-control">
+			</label>
+			<label>password
+				<input type="password" ng-model="localLoginUser.password" class="form-control">
+			</label>
+			<button class="btn btn-outline btn-primary">Login</button>
+		</form>
+	</div>
+
 	<!-- Local register -->
 	<div class="panel" ng-hide="authData">
+		<h4>Register</h4>
 		<form class="form-group" ng-submit="register()">
 			<label>email
 				<input type="username" ng-model="registerUser.email" class="form-control">
@@ -24,4 +39,7 @@
 		<p>{[{ authData.facebook.displayName }]}</p>
 		<button ng-click="logout()" class="btn btn-outline btn-default">Logout</button>
 	</div>
+
+	<button ng-click="goCreateForm()" class="btn btn-outline btn-default">Create form</button>
+	<button ng-click="goChat()" class="btn btn-outline btn-default">Chat</button>
 </div>

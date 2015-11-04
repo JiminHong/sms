@@ -20,7 +20,7 @@ myapp.config(function ($routeProvider, $locationProvider){
 	.when('/createForm', {
 		//its gonna load this page and run this controller.
 		templateUrl : 'views/createForm.html',
-		controller 	: 'createFormCtrl', function($scope, $http){
+		controller 	: 'CreateFormCtrl', function($scope, $http){
 
 		}
 	})
@@ -31,9 +31,11 @@ myapp.config(function ($routeProvider, $locationProvider){
 			
 		}
 	})
-	.when('/login/:user', {
-		templateUrl : 'views/userProfile.html',
-		controller  : 'viewProfileCtrl'
+	.when('/chat', {
+		templateUrl : 'views/chat.html',
+		controller 	: 'ChatCtrl', function($scope, $http){
+
+		}
 	})
 
 })

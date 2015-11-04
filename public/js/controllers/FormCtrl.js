@@ -1,4 +1,4 @@
-angular.module('myapp')
+myapp
 .controller('FormCtrl', ["$scope", "$http", "$firebaseObject", "$location", "$routeParams", function ($scope, $http, $firebaseObject, $location, $routeParams){
 	console.log('FormCtrl fired');
 
