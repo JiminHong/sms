@@ -30,7 +30,7 @@
 	</form>
 
 	<div ng-repeat= "group in groups">
-		<div ng-click="enterGroupChat(group.newGroupName)">
+		<div ng-click="enterGroupChat(group.$id)">
 			<a><h4>{[{ group.newGroupName }]}</h4></a>
 		</div>
 	</div>

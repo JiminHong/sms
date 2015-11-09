@@ -43,7 +43,7 @@ myapp.config(function ($routeProvider, $locationProvider){
 
 		}
 	})
-	.when('/groupChat/:newGroupName', {
+	.when('/groupChat/:groupId', {
 		templateUrl : 'views/groupChat.html',
 		controller	: 'GroupChatCtrl', function($scope){
 		}
