@@ -1,5 +1,5 @@
-myapp.controller('ChatCtrl', ["$scope", "$firebaseArray", "$firebaseAuth", 
-function ($scope, $firebaseArray, $firebaseAuth) {
+myapp.controller('ChatCtrl', ["$scope", "$firebaseArray", "$firebaseAuth", "$location", 
+function ($scope, $firebaseArray, $firebaseAuth, $location) {
     console.log('ChatCtrl fired');
 
     var ref = new Firebase("https://amber-fire-1000.firebaseio.com/", "sample");
@@ -27,16 +27,19 @@ function ($scope, $firebaseArray, $firebaseAuth) {
     var groupRef = new Firebase("https://amber-fire-1000.firebaseio.com/");
     $scope.groups = $firebaseArray(ref);
 
+    //Adding a new group chat
     $scope.createGroup = function(){
         $scope.groups.$add({
             newGroupName: $scope.groups.groupName,
             newGroupPassword: $scope.groups.groupPassword
         });
         console.log($scope.groups.groupName, $scope.groups.groupPassword);
+
     }
 
-    $scope.enterGroupChat = function(){
+    $scope.enterGroupChat = function($location){
         console.log("enterGroupChat fired");
+        $location.path('/groupChat');
     }
     
     
