@@ -17,7 +17,7 @@
 	</form>
 
 	<form class="form-group">
-	<h2>Creat a group chat</h2>
+		<h2>Creat a group chat</h2>
 		<label>
 			Group Name :
 			<input type="text" ng-model="groups.groupName" placeholder="Enter a new group name" class="form-control">
@@ -28,6 +28,10 @@
 		</label>
 		<button ng-click="createGroup()" class="btn btn-default" type="submit" >Send</button>
 	</form>
+
+	<div ng-repeat= "group in groups">
+		{[{ group.newGroupName }]}
+	</div>
 
 
  </div>
