@@ -1,7 +1,4 @@
-
-var myapp = angular.module('myapp');
-
-myapp.controller('AuthCtrl', ["$scope", "$firebaseAuth", "$firebaseObject", "$location", "$routeParams",
+myapp.controller('AuthCtrl', ["$scope", "$firebaseAuth", "$firebaseObject", "$location", "$routeParams", 
 	function ($scope, $firebaseAuth, $firebaseObject, $location, $routeParams){
 		
 		var ref = new Firebase("https://amber-fire-1000.firebaseio.com/", "sample");

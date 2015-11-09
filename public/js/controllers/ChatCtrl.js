@@ -1,5 +1,5 @@
-myapp.controller('ChatCtrl', ["$scope", "$firebaseArray", "$firebaseAuth", "$location", "$routeParams", "ui.bootstrap","cgPrompt",
-function ($scope, $firebaseArray, $firebaseAuth, $location, $routeParams) {
+myapp.controller('ChatCtrl', ["$scope", "$firebaseArray", "$firebaseAuth", "$location", "$routeParams", 
+function ($scope, $firebaseArray, $firebaseAuth, $location, $routeParams, prompt) {
     console.log('ChatCtrl fired');
 
 
@@ -39,7 +39,7 @@ function ($scope, $firebaseArray, $firebaseAuth, $location, $routeParams) {
 
     
 
-    $scope.enterGroupChat = function($scope, newGroupName, prompt){
+    $scope.enterGroupChat = function($scope, newGroupName){
 
         prompt({
             title: 'Password?',
