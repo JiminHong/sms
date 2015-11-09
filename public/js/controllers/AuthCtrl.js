@@ -107,6 +107,4 @@ myapp.controller('AuthCtrl', ["$scope", "$firebaseAuth", "$firebaseObject", "$lo
 			$location.path('/chat');
 		} 
 
-		console.log("authCtrl is fired");
-
 }])

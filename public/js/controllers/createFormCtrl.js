@@ -1,5 +1,4 @@
-myapp
-.controller('CreateFormCtrl', ["$scope", "$http", "$firebaseArray", "$location", "$routeParams", 
+myapp.controller('CreateFormCtrl', ["$scope", "$http", "$firebaseArray", "$location", "$routeParams", 
 	function ($scope, $http, $firebaseArray, $location, $routeParams){
 	console.log('createFormCtrl fired');
 
