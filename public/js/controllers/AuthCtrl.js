@@ -9,9 +9,10 @@ myapp.controller('AuthCtrl', ["$scope", "$firebaseAuth", "$firebaseObject", "$lo
 
 		// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: onAuth
 		// any time auth status updates, add the user data to scope
-	    $scope.authObj.$onAuth(function(authData, index) {
+	    $scope.authObj.$onAuth(function(authData) {
 	      	$scope.authData = authData;
 	      	// console.log("THIS IS AUTHDATA",authData);
+
 	    });
 
         // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: Local

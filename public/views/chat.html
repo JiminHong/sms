@@ -1,15 +1,33 @@
-<h2>This is chat</h2>
-<div class="well" ng-app="chat" ng-controller="ChatCtrl">
+
+<div ng-controller="ChatCtrl">
 	<form class="form-inline">
-		Your name: <input type="text" ng-model="chatUsername">
+	<h2>Global Chat</h2>
+<!-- 		<label>Your name: 
+			<input type="text" ng-model="chatUsername">
+		</label> -->
 	</form>
-	<div ng-cloak ng-repeat="message in messages">
-		<em>{[{message.from}]}: </em>{[{message.content}]}
-	</div><br/>
-	<form class="form-inline" ng-submit="addMessage()">
-		<input type="text" ng-model="message" placeholder="Message...">
-		<button class="btn" type="submit">
-	  		<i class="icon-reply"> Send</i>
-		</button>
+	<!-- Use this directive to avoid the undesirable flicker effect caused by the html template display. -->
+	<div ng-repeat="message in messages">
+		<p><em>{[{message.from}]}: </em>{[{message.content}]}</p>
+	</div>
+
+	<form class="form-inline form-group" ng-submit="addMessage()">
+		<input type="text" ng-model="message" placeholder="Type your message here" class="form-control">
+		<button class="btn btn-default" type="submit">Send</button>
 	</form>
+
+	<form class="form-group">
+	<h2>Creat a group chat</h2>
+		<label>
+			Group Name :
+			<input type="text" ng-model="groups.groupName" placeholder="Enter a new group name" class="form-control">
+		</label>
+		<label>
+			Password :
+			<input type="password" ng-model="groups.groupPassword" placeholder="Enter a new group name" class="form-control">
+		</label>
+		<button ng-click="createGroup()" class="btn btn-default" type="submit" >Send</button>
+	</form>
+
+
  </div>

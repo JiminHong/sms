@@ -17,10 +17,29 @@ function ($scope, $firebaseArray, $firebaseAuth) {
 
         $scope.addMessage = function() {
             $scope.messages.$add({
-            from: $scope.chatUsername, content: $scope.message
-        });
+                from: $scope.chatUsername, 
+                content: $scope.message
+            });
         $scope.message = "";
         }
     });
+
+    var groupRef = new Firebase("https://amber-fire-1000.firebaseio.com/");
+    $scope.groups = $firebaseArray(ref);
+
+    $scope.createGroup = function(){
+        $scope.groups.$add({
+            newGroupName: $scope.groups.groupName,
+            newGroupPassword: $scope.groups.groupPassword
+        });
+        console.log($scope.groups.groupName, $scope.groups.groupPassword);
+    }
+
+    $scope.enterGroupChat = function(){
+        console.log("enterGroupChat fired");
+    }
+    
     
 }]);
+
+
