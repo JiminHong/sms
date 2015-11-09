@@ -1,4 +1,5 @@
-myapp.controller('GroupChatCtrl', ["$scope",
-	function ($scope){
-		console.log('GroupChatCtrl fired');
+myapp.controller('GroupChatCtrl', ["$scope", "$routeParams",
+	function ($scope, $routeParams){
+		$scope.theGroup = $routeParams.newGroupName;
+		console.log('GroupChatCtrl fired', $routeParams.newGroupName);
 }])

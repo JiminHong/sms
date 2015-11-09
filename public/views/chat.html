@@ -1,5 +1,5 @@
 
-<div ng-controller="ChatCtrl">
+<div>
 	<form class="form-inline">
 	<h2>Global Chat</h2>
 <!-- 		<label>Your name: 
@@ -30,7 +30,9 @@
 	</form>
 
 	<div ng-repeat= "group in groups">
-		<div ng-click="enterGroupChat()"><a>{[{ group.newGroupName }]}</a></div>
+		<div ng-click="enterGroupChat(group.newGroupName)">
+			<a><h4>{[{ group.newGroupName }]}</h4></a>
+		</div>
 	</div>
 
 
