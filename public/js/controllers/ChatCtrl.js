@@ -1,4 +1,4 @@
-myapp.controller('ChatCtrl', ["$scope", "$firebaseArray", "$firebaseAuth", "$location", "$routeParams", 
+myapp.controller('ChatCtrl', ["$scope", "$firebaseArray", "$firebaseAuth", "$location", "$routeParams","prompt", 
 function ($scope, $firebaseArray, $firebaseAuth, $location, $routeParams, prompt) {
     console.log('ChatCtrl fired');
 
@@ -48,13 +48,13 @@ function ($scope, $firebaseArray, $firebaseAuth, $location, $routeParams, prompt
             console.log("Then")
         })
 
-        console.log("ID in enterGroupChat", $scope);
+        // console.log("ID in enterGroupChat", $scope);
 
-        $scope.groupTitle = $scope.newGroupName;
+        // $scope.groupTitle = $scope.newGroupName;
 
-        $scope.groupId = $scope.$id; 
+        // $scope.groupId = $scope.$id; 
 
-        $location.path('/groupChat/'+ $scope);
+        // $location.path('/groupChat/'+ $scope);
     }
 
     
