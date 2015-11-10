@@ -12,6 +12,7 @@ function ($scope, $firebaseArray, $firebaseAuth, $location, $routeParams) {
         $scope.authData = authData;
         console.log("THIS IS AUTHDATA in Chat Ctrl",authData.password.email);
         
+    // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: Adding messages        
         $scope.messages = $firebaseArray(ref.limit(15));
         $scope.chatUsername = authData.password.email;
         console.log("Username is ", $scope.chatUsername);
@@ -47,17 +48,11 @@ function ($scope, $firebaseArray, $firebaseAuth, $location, $routeParams) {
         $scope.groupId = $scope.$id; 
         $scope.newGroupPasswordAuth = prompt("Enter the password for " + $scope.newGroupName, "Enter the password")
         if ($scope.newGroupPasswordAuth === $scope.newGroupPassword){
-            alert("successfully entered");
-            $location.path('/groupChat/'+ $scope);
+            $location.path('/groupChat/'+ $scope.$id);
         }else{
             alert("wrong")
             $scope.newGroupPasswordAuth = prompt("Re enter your password")
         }
-
-        // console.log("ID in enterGroupChat", $scope);
-
-
-        // $location.path('/groupChat/'+ $scope);
     }
 
     

@@ -1,3 +1,14 @@
+<p>{[{ authData.password.email }]}</p>
+
 <div ng-model="theGroup">
-	<h1>{[{ theGroup }]}</h1>
+	<h2>Group name : {[{ theGroup.newGroupName }]}</h2>
 </div>
+
+<div ng-repeat="groupMessage in groupMessages">
+	<p><em>{[{groupMessage.from}]}: </em>{[{groupMessage.content}]}</p>
+</div>
+
+<form class="form-inline form-group" ng-submit="addMessage()">
+	<input type="text" ng-model="groupMessage" placeholder="Type your groupMessage here" class="form-control">
+	<button class="btn btn-default" type="submit">Send</button>
+</form>
