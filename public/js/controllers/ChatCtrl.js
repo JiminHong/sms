@@ -1,5 +1,5 @@
-myapp.controller('ChatCtrl', ["$scope", "$firebaseArray", "$firebaseAuth", "$location", "$routeParams","prompt", 
-function ($scope, $firebaseArray, $firebaseAuth, $location, $routeParams, prompt) {
+myapp.controller('ChatCtrl', ["$scope", "$firebaseArray", "$firebaseAuth", "$location", "$routeParams", 
+function ($scope, $firebaseArray, $firebaseAuth, $location, $routeParams) {
     console.log('ChatCtrl fired');
 
 
@@ -39,20 +39,23 @@ function ($scope, $firebaseArray, $firebaseAuth, $location, $routeParams, prompt
 
     
 
-    $scope.enterGroupChat = function($scope, newGroupName){
+    $scope.enterGroupChat = function($scope, newGroupName, newGroupPassword){
+        console.log("ID in enterGroupChat", $scope.newGroupPassword)
 
-        prompt({
-            title: 'Password?',
-            message: 'Enter the password'
-        }).then(function(){
-            console.log("Then")
-        })
+        $scope.groupTitle = $scope.newGroupName;
+
+        $scope.groupId = $scope.$id; 
+        $scope.newGroupPasswordAuth = prompt("Enter the password for " + $scope.newGroupName, "Enter the password")
+        if ($scope.newGroupPasswordAuth === $scope.newGroupPassword){
+            alert("successfully entered");
+            $location.path('/groupChat/'+ $scope);
+        }else{
+            alert("wrong")
+            $scope.newGroupPasswordAuth = prompt("Re enter your password")
+        }
 
         // console.log("ID in enterGroupChat", $scope);
 
-        // $scope.groupTitle = $scope.newGroupName;
-
-        // $scope.groupId = $scope.$id; 
 
         // $location.path('/groupChat/'+ $scope);
     }
