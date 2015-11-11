@@ -12,24 +12,18 @@ function ($scope, $firebaseArray, $firebaseAuth, $location, $routeParams) {
         $scope.authData = authData;
          console.log("THIS IS AUTHDATA in Chat Ctrl",authData);
         
-    // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: Adding messages        
-        $scope.messages = $firebaseArray(ref.limit(15));
-
-
-        //If I have local login data
         if(authData.password != null){
             $scope.chatUsername = authData.password.email;
-            console.log("local",$scope.chatUsername)
         }else if (authData.facebook != null){
             $scope.chatUsername = authData.facebook.displayName;
-            console.log("facebook",$scope.chatUsername);
         }else{
             $scope.chatUsername = authData.google.displayName;
-            console.log("google",$scope.chatUsername);
         }
 
         console.log("Username is ", $scope.chatUsername);
-
+        
+    // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: Adding messages
+        $scope.messages = $firebaseArray(ref.limit(15));
         $scope.addMessage = function() {
             $scope.messages.$add({
                 from: $scope.chatUsername, 
@@ -46,18 +40,14 @@ function ($scope, $firebaseArray, $firebaseAuth, $location, $routeParams) {
     $scope.createGroup = function(){
         $scope.groups.$add({
             newGroupName: $scope.groups.groupName,
-            newGroupPassword: $scope.groups.groupPassword,
-            // groupTitle: ""
+            newGroupPassword: $scope.groups.groupPassword
         });
+        $scope.messages = "";
     }
 
-    
 
     $scope.enterGroupChat = function($scope, newGroupName, newGroupPassword){
-        console.log("ID in enterGroupChat", $scope.newGroupPassword)
-
         $scope.groupTitle = $scope.newGroupName;
-
         $scope.groupId = $scope.$id; 
         $scope.newGroupPasswordAuth = prompt("Enter the password for " + $scope.newGroupName, "Enter the password")
         if ($scope.newGroupPasswordAuth === $scope.newGroupPassword){

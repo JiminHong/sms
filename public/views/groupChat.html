@@ -1,11 +1,19 @@
-<p>{[{ authData.password.email }]}</p>
+<div class="panel" ng-show="authData">
+	<img ng-src="{[{ authData.facebook.profileImageURL }]}" />
+	<p>{[{ authData.facebook.displayName }]}</p>
+
+	<img ng-src="{[{ authData.google.profileImageURL }]}" />
+	<p>{[{ authData.google.displayName }]}</p>
+
+	<p>{[{ authData.password.email }]}</p> 
+</div>
 
 <div ng-model="theGroup">
 	<h2>Group name : {[{ theGroup.newGroupName }]}</h2>
 </div>
 
-<div ng-repeat="groupMessage in groupMessages">
-	<p><em>{[{groupMessage.from}]}: </em>{[{groupMessage.content}]}</p>
+<div ng-repeat="messages in theGroup">
+	<p><em>{[{messages.from}]}: </em>{[{messages.content}]}</p>
 </div>
 
 <form class="form-inline form-group" ng-submit="addMessage()">

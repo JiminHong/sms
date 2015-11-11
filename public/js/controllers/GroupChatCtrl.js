@@ -2,35 +2,33 @@ myapp.controller('GroupChatCtrl', ["$scope", "$routeParams", "$firebaseObject", 
 	function ($scope, $routeParams, $firebaseObject, $firebaseArray, $firebaseAuth){
 
 		var ref 			= new Firebase("https://amber-fire-1000.firebaseio.com/"+$routeParams.groupId);
-		var groupMessageRef 	= new Firebase("https://amber-fire-1000.firebaseio.com/group");
 		var authRef 		= new Firebase("https://amber-fire-1000.firebaseio.com/","sample");
 
 		$scope.theGroup 	= $firebaseObject(ref);
-		$scope.msgGroup = $firebaseArray(groupMessageRef);
 		$scope.authObj 		= $firebaseAuth(authRef);
 
 		$scope.authObj.$onAuth(function(authData) {
 
         	$scope.authData = authData;
-	        $scope.chatUsername = authData.password.email;
-			$scope.groupMessages = $firebaseArray(ref.limit(15));
+        	if(authData.password != null){
+	            $scope.chatUsername = authData.password.email;
+	        }else if (authData.facebook != null){
+	            $scope.chatUsername = authData.facebook.displayName;
+	        }else{
+	            $scope.chatUsername = authData.google.displayName;
+	        }
 
-	        console.log("Username is ", $scope.chatUsername);
-	        console.log("message is ", $scope.msgGroup);
-
+	// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: Adding messages
+	        $scope.messages = $firebaseArray(ref.limit(15));
 	        $scope.addMessage = function() {
-	            $scope.groupMessages.$add({
-	                name: $scope.chatUsername, 
-	                value: $scope.msgGroup
+	            $scope.messages.$add({
+	                from: $scope.chatUsername, 
+	                content: $scope.groupMessage
 	            });
-	        $scope.msgGroup = "";
+	        $scope.groupMessage = "";
 	        }
 	        
     	})
 
-    	
-
-
-
-		console.log('GroupChatCtrl fired', $scope.groupMessages);
+		console.log('GroupChatCtrl fired', $scope);
 }])
