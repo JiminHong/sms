@@ -34,7 +34,7 @@ function ($scope, $firebaseArray, $firebaseAuth, $location, $routeParams) {
         $scope.groups.$add({
             newGroupName: $scope.groups.groupName,
             newGroupPassword: $scope.groups.groupPassword,
-            groupTitle: ""
+            // groupTitle: ""
         });
     }
 
