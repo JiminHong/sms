@@ -9,7 +9,6 @@ myapp.controller('AuthCtrl', ["$scope", "$firebaseAuth", "$firebaseObject", "$lo
 	    $scope.authObj.$onAuth(function(authData) {
 	      	$scope.authData = authData;
 	      	// console.log("THIS IS AUTHDATA",authData);
-
 	    });
 
         // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: Local
@@ -64,7 +63,8 @@ myapp.controller('AuthCtrl', ["$scope", "$firebaseAuth", "$firebaseObject", "$lo
 			$scope.authObj.$authWithOAuthPopup("facebook")
 			.then(function(authData){
 				$scope.authData = authData;
-				console.log("authData :::: ",authData);
+				console.log("authData :::: ",authData.facebook.displayName);
+				$location.path("/loggedIn");
 			})
 			.catch(function(error) {
 				console.log(error);
@@ -73,9 +73,11 @@ myapp.controller('AuthCtrl', ["$scope", "$firebaseAuth", "$firebaseObject", "$lo
 		// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: Google (authWithOAuthRedirect)
 		//Login with Google Oauth
 		$scope.loginGoogle = function(obj){
-			$scope.authObj.$authWithOAuthRedirect("google").then(function(authData) {
+			$scope.authObj.$authWithOAuthPopup("google")
+			.then(function(authData) {
 				$scope.authData = authData;
-				console.log("authData :::: ",authData);
+				console.log("authData Google:::: ",authData);
+				$location.path("/loggedIn");
 			})
 			.then( function(){
 				//No calls page direct
@@ -90,7 +92,7 @@ myapp.controller('AuthCtrl', ["$scope", "$firebaseAuth", "$firebaseObject", "$lo
 		//Logout with Facebook 
 		$scope.logout = function() {
 			$scope.authObj.$unauth();
-			console.log("Logout");
+			console.log("Logout", $scope.authObj);
 			$location.path('/');
 		}
 

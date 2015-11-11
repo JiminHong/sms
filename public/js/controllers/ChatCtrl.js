@@ -10,11 +10,24 @@ function ($scope, $firebaseArray, $firebaseAuth, $location, $routeParams) {
     // any time auth status updates, add the user data to scope
     $scope.authObj.$onAuth(function(authData) {
         $scope.authData = authData;
-        console.log("THIS IS AUTHDATA in Chat Ctrl",authData.password.email);
+         console.log("THIS IS AUTHDATA in Chat Ctrl",authData);
         
     // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: Adding messages        
         $scope.messages = $firebaseArray(ref.limit(15));
-        $scope.chatUsername = authData.password.email;
+
+
+        //If I have local login data
+        if(authData.password != null){
+            $scope.chatUsername = authData.password.email;
+            console.log("local",$scope.chatUsername)
+        }else if (authData.facebook != null){
+            $scope.chatUsername = authData.facebook.displayName;
+            console.log("facebook",$scope.chatUsername);
+        }else{
+            $scope.chatUsername = authData.google.displayName;
+            console.log("google",$scope.chatUsername);
+        }
+
         console.log("Username is ", $scope.chatUsername);
 
         $scope.addMessage = function() {

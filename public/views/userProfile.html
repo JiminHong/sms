@@ -1,3 +1,11 @@
-<h1>This is userProfile page</h1>
-<p>{[{ authData.password.email }]}</p>
 <button ng-click="goChat()" class="btn btn-outline btn-default">Chat</button>
+
+<div class="panel" ng-show="authData">
+	<img ng-src="{[{ authData.facebook.profileImageURL }]}" />
+	<p>{[{ authData.facebook.displayName }]}</p>
+
+	<img ng-src="{[{ authData.google.profileImageURL }]}" />
+	<p>{[{ authData.google.displayName }]}</p>
+
+	<p>{[{ authData.password.email }]}</p> 
+</div>

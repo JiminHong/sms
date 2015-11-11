@@ -10,9 +10,10 @@ myapp
 
 	// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: onAuth
 	// any time auth status updates, add the user data to scope
+	// Local Login
     $scope.authObj.$onAuth(function(authData) {
       	$scope.authData = authData;
-      	console.log("THIS IS AUTHDATA in UserProfileCtrl", authData.password.email);
+      	 	
     });
 
 	//Directs to the chat page
