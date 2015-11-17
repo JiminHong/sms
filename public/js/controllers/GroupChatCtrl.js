@@ -9,26 +9,39 @@ myapp.controller('GroupChatCtrl', ["$scope", "$routeParams", "$firebaseObject", 
 
 		$scope.authObj.$onAuth(function(authData) {
 
-        	$scope.authData = authData;
-        	if(authData.password != null){
+	    	$scope.authData = authData;
+	    	// If local login? 
+	    	if(authData.password != null){
 	            $scope.chatUsername = authData.password.email;
+	        // Facebook login?
 	        }else if (authData.facebook != null){
 	            $scope.chatUsername = authData.facebook.displayName;
+	        // Google login?
 	        }else{
 	            $scope.chatUsername = authData.google.displayName;
 	        }
 
-	// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: Adding messages
+		// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: Adding messages
 	        $scope.messages = $firebaseArray(ref.limit(15));
 	        $scope.addMessage = function() {
 	            $scope.messages.$add({
 	                from: $scope.chatUsername, 
 	                content: $scope.groupMessage
 	            });
-	        $scope.groupMessage = "";
+	        	$scope.groupMessage = "";
 	        }
+		// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: Adding members
+			$scope.groups = $firebaseArray(ref);
+			$scope.addMember = function(){
+				$scope.groups.$add({
+					memberUsername: $scope.memberUsername
+				});
+				$scope.memberUsername = "";
+			}
+
+			console.log('$scope.groups in groupCtrl', $scope.groups);
 	        
     	})
 
-		console.log('GroupChatCtrl fired', $scope);
+		
 }])

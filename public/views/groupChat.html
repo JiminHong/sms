@@ -1,22 +1,32 @@
+<!-- User Information -->
 <div class="panel" ng-show="authData">
-	<img ng-src="{[{ authData.facebook.profileImageURL }]}" />
-	<p>{[{ authData.facebook.displayName }]}</p>
-
-	<img ng-src="{[{ authData.google.profileImageURL }]}" />
-	<p>{[{ authData.google.displayName }]}</p>
-
-	<p>{[{ authData.password.email }]}</p> 
+	<img ng-src="{[{ authData.facebook.profileImageURL || authData.google.profileImageURL}]}" />
+	<p>Your username : {[{ authData.facebook.displayName || authData.google.displayName || authData.password.email}]}</p>
 </div>
 
+<!-- Group Info & Message  -->
 <div ng-model="theGroup">
-	<h2>Group name : {[{ theGroup.newGroupName }]}</h2>
+	<h3>{[{ theGroup.newGroupName }]}</h3>
 </div>
 
 <div ng-repeat="messages in theGroup">
 	<p><em>{[{messages.from}]}: </em>{[{messages.content}]}</p>
 </div>
 
+<!-- Group message -->
 <form class="form-inline form-group" ng-submit="addMessage()">
 	<input type="text" ng-model="groupMessage" placeholder="Type your groupMessage here" class="form-control">
 	<button class="btn btn-default" type="submit">Send</button>
 </form>
+
+<!-- Inviting group members -->
+<form class="form-inline form-group" ng-submit="addMember()">
+	<input type="text" ng-model="memberUsername" placeholder="Invite member" class="form-control">
+	<button class="btn btn-default" type="submit">Invite</button>
+</form>
+
+<!-- See group members -->
+<h4>Group members</h4>
+<div ng-repeat="memberUsername in theGroup">
+	<p>{[{memberUsername.memberUsername}]}</p>
+</div>

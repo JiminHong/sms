@@ -39,3 +39,7 @@ p{
     background-color: transparent;
     transition: all .5s;
 }
+
+.navbar-fixed-top {
+    position: absolute;
+}
