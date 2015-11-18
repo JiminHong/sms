@@ -1,0 +1,19 @@
+{
+  "Group ID" : {
+      "Message_id" : {
+        "content" : "hi",
+        "from" : "Jimin Hong"
+      },
+      "Message_id" : {
+        "content" : "hey",
+        "from" : "Jimin Hong"
+      },
+      "newGroupName" : "leo group",
+      "newGroupOwner" : "Jimin Hong",
+      "newGroupPassword" : "1234"
+    },
+  "global chat id" : {
+    "content" : "global",
+    "from" : "Jimin Hong"
+  }
+}
