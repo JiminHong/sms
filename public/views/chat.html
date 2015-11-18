@@ -1,52 +1,100 @@
+<!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand page-scroll" href="/">Chat Band</a>
+            </div>
 
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="/"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" ng-show="authData" ng-click="goCreateForm()">Create form</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" ng-show="authData" ng-click="goChat()">Chat</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" ng-show="authData" ng-click="logout()">logout</a>
+                    </li>
+                    <li ng-show="authData">
+                    	<a class="page-scroll"> Welcome, {[{ authData.facebook.displayName || authData.google.displayName || authData.password.email}]}</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+<div class="row">
+	<div class="intro-text">
+		<h2 class="section-heading">Chat Band!</h2>
+		<!-- ==========================  MY profile ========================== -->
+		<!-- User Information -->
+		<!-- <div ng-show="authData">
+			<img ng-src="{[{ authData.facebook.profileImageURL || authData.google.profileImageURL}]}" />
+			<p>Welcome, {[{ authData.facebook.displayName || authData.google.displayName || authData.password.email}]}</p>
+		</div> -->
 
-<!-- ==========================  MY profile ========================== -->
-<!-- User Information -->
-<div class="panel" ng-show="authData">
-	<img ng-src="{[{ authData.facebook.profileImageURL || authData.google.profileImageURL}]}" />
-	<p>Your username : {[{ authData.facebook.displayName || authData.google.displayName || authData.password.email}]}</p>
-</div>
+		 <!-- ==========================  My group chats ========================== -->
+		<!-- <h3>My group chats</h3> -->
+		<!-- Select groups by memberUsername -->
+		<!-- <h3>SELECT * FROM groups WHERE newGroupOwner = "jhong@gmail.com";</h3>
+		<pre>?</pre> -->
+		<!-- ==========================  Create a Group Chat ========================== -->
+		<div class="row">
+			<form class="form-group col-lg-6">
+				<h3>Creat a group chat</h3>
+				<label>
+					Group Name :
+					<input type="text" ng-model="groups.groupName" placeholder="Enter a new group name" class="form-control">
+				</label>
+				<label>
+					Password :
+					<input type="password" ng-model="groups.groupPassword" placeholder="Enter a new group name" class="form-control">
+				</label>
+				<button ng-click="createGroup()" class="btn btn-default" type="submit" >Send</button>
+			</form>
 
- <!-- ==========================  My group chats ========================== -->
-<h3>My group chats</h3>
-<!-- Select groups by memberUsername -->
-<h3>SELECT * FROM groups WHERE newGroupOwner = "jhong@gmail.com";</h3>
-<pre>?</pre>
-<!-- ==========================  Create a Group Chat ========================== -->
-<form class="form-group">
-	<h3>Creat a group chat</h3>
-	<label>
-		Group Name :
-		<input type="text" ng-model="groups.groupName" placeholder="Enter a new group name" class="form-control">
-	</label>
-	<label>
-		Password :
-		<input type="password" ng-model="groups.groupPassword" placeholder="Enter a new group name" class="form-control">
-	</label>
-	<button ng-click="createGroup()" class="btn btn-default" type="submit" >Send</button>
-</form>
+			<!-- ========================== Group Chats  ========================== -->
+			<div class="col-lg-6">
+				<h3>Groups</h3>
+				<!-- {[{ groups[10] }]}-->
+				 <div ng-repeat= "group in groups">
+					<div ng-click="enterGroupChat(group)">
+						<a>{[{ group.newGroupName }]}</a>
+					</div>
+	<!-- 				<div ng-repeat="data in group">
+						{[{ data.memberUsername }]}
+					</div> -->
+				</div>
+			</div>
+		</div>
 
-<!-- ========================== Group Chats  ========================== -->
-<hr>
-<h3>Groups</h3>
-<!-- {[{ groups[10] }]}-->
- <div ng-repeat= "group in groups">
-	<div ng-click="enterGroupChat(group)">
-		<a>{[{ group.newGroupName }]}</a>
+		<!-- ========================== Global Chat ========================== -->
+		<hr>
+		<div class="row">
+			<div class="col-lg-6">
+			<h3>Global Chat</h3>
+			<div ng-repeat="message in messages">
+				<p><em>{[{message.from}]}: </em>{[{message.content}]}</p>
+			</div>
+
+			<form class="form-inline form-group" ng-submit="addMessage()">
+				<input type="text" ng-model="message" placeholder="Type your message here" class="form-control">
+				<button class="btn btn-default" type="submit">Send</button>
+			</form>
+			</div>
+		</div>
 	</div>
-	<div ng-repeat="data in group">
-		{[{ data.memberUsername }]}
-	</div>
 </div>
-
-<!-- ========================== Global Chat ========================== -->
-<hr>
-<h3>Global Chat</h3>
-<div ng-repeat="message in messages">
-	<p><em>{[{message.from}]}: </em>{[{message.content}]}</p>
-</div>
-
-<form class="form-inline form-group" ng-submit="addMessage()">
-	<input type="text" ng-model="message" placeholder="Type your message here" class="form-control">
-	<button class="btn btn-default" type="submit">Send</button>
-</form>

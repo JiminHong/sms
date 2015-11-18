@@ -1,5 +1,6 @@
 body{
 	font-family: 'Open Sans', sans-serif;
+    height: 100%;
 }
 
 #wrapper {
@@ -16,30 +17,81 @@ label {
 }
 
 h1{
-	font-weight: 800;
-	color: rgba(64, 64, 64, 1);
+/*	font-weight: 800;
+*/	color: rgba(64, 64, 64, 1);
 }
 h2{
 	color: rgba(38, 50, 72, 1); 
 }
 h3{
 	color: rgba(126, 138, 162, 1);
-	font-weight: 700;
-}
+/*	font-weight: 700;
+*/}
 h4{
-	font-weight: 600;
-	color: rgba(38, 50, 72, 1);
+/*	font-weight: 600;
+*/	color: rgba(38, 50, 72, 1);
+}
+h5{
+	color: rgba(38, 50, 72, .5);
+	float: left;
 }
 p{
-	font-weight: 300;
-	color: rgba(38, 50, 72, 1);
+/*	font-weight: 300;
+*/	color: rgba(38, 50, 72, 1);
 }
-.btn-outline {
-    color: inherit;
-    background-color: transparent;
-    transition: all .5s;
+
+h4.subheading {
+    text-transform: none;
+}
+
+.authWrapper{
+    width: 70%;
+    margin: 0 auto;
+/*    background-color: rgba(255,255,255,.4);*/
 }
 
 .navbar-fixed-top {
     position: absolute;
+}
+
+.btn-xl {
+    width: 100%;
+    margin-top: 10px;
+    padding: 7px 40px;
+    border-color: #6b7f48;
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    background-color: #6b7f48;
+}
+
+.profileImg{
+    width: 100px;
+}
+
+footer{
+    background-color: #212220;
+    bottom: 0;
+}
+.copyright{
+    color: #b3b6ae;
+}
+
+* {
+  margin: 0;
+}
+html, body {
+  height: 100%;
+}
+header{
+    min-height: 100%;
+}
+@media (min-width: 768px){
+	header .intro-text {
+    	padding-top: 150px;
+        padding-bottom: 100px;
+	}
 }

@@ -75,6 +75,27 @@ function ($scope, $firebaseArray, $firebaseAuth, $location, $routeParams) {
             $scope.newGroupPasswordAuth = prompt("Re enter your password")
         }
     }
+
+    // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: AuthLogout
+
+        //Logout with Facebook 
+        $scope.logout = function() {
+            $scope.authObj.$unauth();
+            console.log("Logout", $scope.authObj);
+            $location.path('/');
+        }
+
+        //Directs to Creating form page
+        $scope.goCreateForm = function(){
+            $location.path('/createForm');
+        }
+
+        //Directs to the chat page
+        $scope.goChat = function(){
+            $location.path('/chat');
+        } 
+
+        
 }]);
 
 
